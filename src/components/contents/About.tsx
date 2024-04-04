@@ -1,7 +1,26 @@
-import myLogo from "@/assets/img/hero/img.jpg";
+import myLogo from "@/assets/img/hero/khoa.jpg";
 import myCV from "@/assets/cv/cv.pdf";
+import img550 from "@/assets/img/about/550x640.jpg";
+
+import { TypeAnimation } from "react-type-animation";
+import { useEffect, useRef } from "react";
+import Parallax from "parallax-js";
 
 const About = () => {
+  const sceneEl = useRef(null);
+
+  useEffect(() => {
+    if (sceneEl && sceneEl.current) {
+      const parallaxInstance = new Parallax(sceneEl.current, {
+        relativeInput: true,
+        hoverOnly: true,
+      });
+
+      parallaxInstance.enable();
+
+      return () => parallaxInstance.disable();
+    }
+  }, []);
   return (
     <div className="arlo_tm_section relative" id="about">
       <div className="arlo_tm_about_wrapper_all">
@@ -16,13 +35,18 @@ const About = () => {
                 <div
                   className="about_image_wrap parallax"
                   data-relative-input="true"
+                  ref={sceneEl}
                 >
                   <div className="image layer" data-depth="0.1">
-                    <img src="img/about/550x640.jpg" alt="550x640" />
-                    <div className="inner" data-img-url={myLogo}></div>
+                    <img src={img550} alt="550x640" />
+                    <div
+                      className="inner"
+                      data-img-url={myLogo}
+                      style={{ backgroundImage: `url(${myLogo})` }}
+                    ></div>
                   </div>
                   <div className="border layer" data-depth="0.2">
-                    <img src="img/about/550x640.jpg" alt="550x640" />
+                    <img src={img550} alt="550x640" />
                     <div className="inner"></div>
                   </div>
                 </div>
@@ -30,77 +54,61 @@ const About = () => {
               <div className="rightbox">
                 <div className="arlo_tm_mini_title_holder">
                   <h4>
-                    I'm Alan Michaelis and{" "}
+                    Hi there&nbsp;
+                    <TypeAnimation
+                      sequence={["I'm a Web Developer Frontend React", 2000]}
+                      wrapper="span"
+                      cursor={true}
+                      repeat={Infinity}
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined} // style={{ fontSize: "2em", display: "inline-block" }}
+                    />
                     <span className="arlo_tm_animation_text_word"></span>
                   </h4>
                 </div>
                 <div className="definition">
                   <p>
-                    Hi! My name is <strong>Alan Michaelis</strong>. I am a Web
-                    Developer, and I'm very passionate and dedicated to my work.
-                    With 20 years experience as a professional Web developer, I
-                    have acquired the skills and knowledge necessary to make
-                    your project a success. I enjoy every step of the design
-                    process, from discussion and collaboration to concept and
-                    execution, but I find the most satisfaction in seeing the
-                    finished product do everything for you that it was created
-                    to do.
+                    Xin chào tôi là <strong>Trịnh Lê Anh Khoa</strong>
                   </p>
                 </div>
                 <div className="about_short_contact_wrap">
                   <ul>
                     <li>
                       <span>
-                        <label>Birthday:</label> 01.07.1990
+                        <label>Birthday:</label> 16.01.1999
                       </span>
                     </li>
+
                     <li>
                       <span>
-                        <label>Age:</label> 28
+                        <label>City:</label> TP.Hồ Chí Minh
                       </span>
                     </li>
+
                     <li>
                       <span>
-                        <label>City:</label> New York, USA
+                        <label>Study:</label> TRƯỜNG ĐẠI HỌC NGOẠI NGỮ - TIN HỌC
+                        TP. HỒ CHÍ MINH (HUFLIT).
                       </span>
                     </li>
-                    <li>
-                      <span>
-                        <label>Interests:</label> Soccer, UFC
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <label>Study:</label> Chicago University
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <label>Degree:</label> Master
-                      </span>
-                    </li>
-                    <li>
-                      <span>
-                        <label>Website:</label>{" "}
-                        <a href="#">www.mywebsite.com</a>
-                      </span>
-                    </li>
+
                     <li>
                       <span>
                         <label>Mail:</label>{" "}
-                        <a href="mailto:example@gmail.com">
-                          mymail&#64;gmail.com
+                        <a href="trinhleanhkhoa1999@gmail.com">
+                          trinhleanhkhoa1999&#64;gmail.com
                         </a>
                       </span>
                     </li>
                     <li>
                       <span>
-                        <label>Phone:</label> <a href="#">+77 022 177 05 05</a>
+                        <label>Phone:</label> <a href="#">0932704521</a>
                       </span>
                     </li>
                     <li>
                       <span>
-                        <label>Twitter:</label> <a href="#">&#64;myusername</a>
+                        <label>Facebook</label> <a href="#">&#64;myusername</a>
                       </span>
                     </li>
                   </ul>
